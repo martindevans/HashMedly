@@ -2,6 +2,10 @@
 
 HashMedly is designed to make it easy to write a quality implementation of `GetHashCode()`. Traditionally this consists of visiting [this stackoverflow question](http://stackoverflow.com/q/263400/108234) and implementing top rated answer... unfortunately the top rated answer includes multiple solutions and it's not clear what the best thing is to do. This library aims to solve that.
 
+HashMedly is available [on nuget](https://www.nuget.org/packages/HashMedly/):
+
+ > Install-Package HashMedly
+
 # TL;DR
 
 If you don't care about the details of the library, use this:
