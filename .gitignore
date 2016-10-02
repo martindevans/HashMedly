@@ -1,0 +1,17 @@
+*.suo
+*.user
+*.ncrunchsolution
+*.ncrunchproject
+*.cache
+
+packages
+_Resharper.Caches
+
+HashMedly/bin
+HashMedly/obj
+
+HashMedlyTests/bin
+HashMedlyTests/obj
+
+Profiler/bin
+Profiler/obj
