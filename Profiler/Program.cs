@@ -12,15 +12,15 @@ namespace Profiler
     {
         public static void Main(string[] args)
         {
-            ////Pure performance test
-            //BenchmarkRunner.Run<Performance>();
-            //Console.WriteLine("Press any key to continue");
-            //Console.ReadKey();
-
-            //Collisions
-            Collisions.Run();
+            //Pure performance test
+            BenchmarkRunner.Run<Performance>();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
+
+            ////Collisions
+            //Collisions.Run();
+            //Console.WriteLine("Press any key to continue");
+            //Console.ReadKey();
 
             ////Distribution test
             //Distribution.Run();
@@ -72,24 +72,24 @@ namespace Profiler
         [Benchmark]
         public int FNV1A_32()
         {
-            return HashMedly.Generators.Generator8.FNV1A32
-                 .Create()
-                 .Mix(_int)
-                 .Mix(_long)
-                 .Mix(_byte)
-                 .Mix(_bool).Mix(_string)
+            return IGenerator8Extensions.Mix(HashMedly.Generators.Generator8.FNV1A32
+                                           .Create()
+                                           .Mix(_int)
+                                           .Mix(_long)
+                                           .Mix(_byte)
+                                           .Mix(_bool), _string)
                 .GetHashCode();
         }
 
         [Benchmark]
         public int FNV1A_64()
         {
-            return HashMedly.Generators.Generator8.FNV1A64
-                .Create()
-                .Mix(_int)
-                .Mix(_long)
-                .Mix(_byte)
-                .Mix(_bool).Mix(_string)
+            return IGenerator8Extensions.Mix(HashMedly.Generators.Generator8.FNV1A64
+                                          .Create()
+                                          .Mix(_int)
+                                          .Mix(_long)
+                                          .Mix(_byte)
+                                          .Mix(_bool), _string)
                 .GetHashCode();
         }
     }
@@ -342,7 +342,7 @@ namespace Profiler
         {
             var h = HashMedly.Generators.Generator8.FNV1A32.Create();
             for (var i = 0; i < values.Count; i++)
-                h = h.Mix(values[i]);
+                h = IGenerator8Extensions.Mix(h, values[i]);
 
             return h.GetHashCode();
         }
@@ -350,14 +350,14 @@ namespace Profiler
         public override int Hash(string value)
         {
             var h = HashMedly.Generators.Generator8.FNV1A32.Create();
-            h = h.Mix(value);
+            h = IGenerator8Extensions.Mix(h, value);
             return h.GetHashCode();
         }
 
         public override int Hash(ulong value)
         {
             var h = HashMedly.Generators.Generator8.FNV1A32.Create();
-            h = h.Mix(value);
+            h = IGenerator8Extensions.Mix(h, value);
             return h.GetHashCode();
         }
 
@@ -375,7 +375,7 @@ namespace Profiler
         {
             var h = HashMedly.Generators.Generator8.FNV1A64.Create();
             for (var i = 0; i < values.Count; i++)
-                h = h.Mix(values[i]);
+                h = IGenerator8Extensions.Mix(h, values[i]);
 
             return h.GetHashCode();
         }
@@ -383,14 +383,14 @@ namespace Profiler
         public override int Hash(string value)
         {
             var h = HashMedly.Generators.Generator8.FNV1A64.Create();
-            h = h.Mix(value);
+            h = IGenerator8Extensions.Mix(h, value);
             return h.GetHashCode();
         }
 
         public override int Hash(ulong value)
         {
             var h = HashMedly.Generators.Generator8.FNV1A64.Create();
-            h = h.Mix(value);
+            h = IGenerator8Extensions.Mix(h, value);
             return h.GetHashCode();
         }
 
