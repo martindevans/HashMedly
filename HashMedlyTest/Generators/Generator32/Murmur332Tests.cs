@@ -2,7 +2,7 @@
 using HashMedly.Generators.Generator32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HashMedlyTests.Generators.Generator32
+namespace HashMedlyTest.Generators.Generator32
 {
     [TestClass]
     public class Murmur332Tests

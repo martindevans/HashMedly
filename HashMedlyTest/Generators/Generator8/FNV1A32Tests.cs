@@ -2,20 +2,20 @@
 using HashMedly.Generators.Generator8;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HashMedlyTests.Generators.Generator8
+namespace HashMedlyTest.Generators.Generator8
 {
     [TestClass]
     // ReSharper disable once InconsistentNaming
-    public class FNVA64Tests
+    public class FNVA32Tests
     {
-        private FNV1A64 _hash = FNV1A64.Create();
+        private FNV1A32 _hash = FNV1A32.Create();
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void AssertThat_GetHashFromUninitialized_Throws()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            new FNV1A64().GetHashCode();
+            new FNV1A32().GetHashCode();
         }
 
         [TestMethod]
@@ -24,7 +24,7 @@ namespace HashMedlyTests.Generators.Generator8
             Assert.AreNotEqual(0, _hash.Hash);
         }
 
-        private void Test_ChangesValue(Func<FNV1A64> mix)
+        private void Test_ChangesValue(Func<FNV1A32> mix)
         {
             var before = _hash.GetHashCode();
             var hash = mix();

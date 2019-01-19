@@ -3,6 +3,7 @@
 *.ncrunchsolution
 *.ncrunchproject
 *.cache
+.vs
 
 packages
 _Resharper.Caches
@@ -10,8 +11,8 @@ _Resharper.Caches
 HashMedly/bin
 HashMedly/obj
 
-HashMedlyTests/bin
-HashMedlyTests/obj
+HashMedlyTest/bin
+HashMedlyTest/obj
 
 Profiler/bin
 Profiler/obj

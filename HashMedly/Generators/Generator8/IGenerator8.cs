@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using HashMedly.Generators.Generator32;
 
 namespace HashMedly.Generators.Generator8
 {
@@ -18,9 +17,7 @@ namespace HashMedly.Generators.Generator8
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T Mix<T>(this T hash, byte value) where T : struct, IGenerator8
         {
-            var u = new Union8 { UInt8 = value };
-
-            hash.Byte(u.Byte1);
+            hash.Byte(value);
 
             return hash;
         }
@@ -28,9 +25,7 @@ namespace HashMedly.Generators.Generator8
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T Mix<T>(this T hash, sbyte value) where T : struct, IGenerator8
         {
-            var u = new Union8 { Int8 = value };
-
-            hash.Byte(u.Byte1);
+            hash.Byte(unchecked((byte)value));
 
             return hash;
         }

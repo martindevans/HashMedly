@@ -94,15 +94,15 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HashMedly\HashMedly.csproj">
-      <Project>{8eda1091-f9dc-4bb5-8faa-949532a430f7}</Project>
-      <Name>HashMedly</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="EnglishWords.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HashMedly\HashMedly.csproj">
+      <Project>{258bb1bb-f5a0-4119-bb07-4c8577ee3962}</Project>
+      <Name>HashMedly</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Diagnostics.Tracing.TraceEvent.1.0.41\build\Microsoft.Diagnostics.Tracing.TraceEvent.targets" Condition="Exists('..\packages\Microsoft.Diagnostics.Tracing.TraceEvent.1.0.41\build\Microsoft.Diagnostics.Tracing.TraceEvent.targets')" />
