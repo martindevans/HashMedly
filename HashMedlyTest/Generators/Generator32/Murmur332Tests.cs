@@ -215,11 +215,12 @@ namespace HashMedlyTest.Generators.Generator32
         [TestMethod]
         public void AssertThat_LongerString_ChangesValue()
         {
-            var h1 = Murmur3.Create().Mix((string)"AA").Hash;
+            var h1 = Murmur3.Create().Mix((string)"A").Hash;
             var h2 = Murmur3.Create().Mix((string)"AAA").Hash;
 
             Assert.AreNotEqual(h1, h2);
         }
+
 
         [TestMethod]
         public void AssertThat_MixingObject_ChangesValue()

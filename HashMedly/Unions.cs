@@ -6,8 +6,6 @@ namespace HashMedly
     [StructLayout(LayoutKind.Explicit)]
     internal struct Union8
     {
-        [FieldOffset(0)]public byte UInt8;
-        [FieldOffset(0)]public sbyte Int8;
         [FieldOffset(0)]public bool Bool;
 
         [FieldOffset(0)]public readonly byte Byte1;

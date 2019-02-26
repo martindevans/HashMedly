@@ -22,7 +22,7 @@ namespace HashMedly.Generators.Generator32
                 if (!_initialized)
                     throw new InvalidOperationException("Cannot get Hash from an unitialized Murmur3 instance");
 
-                //Finish off the hash in a temp (we don't want to modify the actual value since that would cause multiple access to be different)
+                //Finish off the hash in a temp (we don't want to modify the actual value since that would cause multiple accesses to be different)
                 var hash = _hash;
 
                 hash ^= _length;
@@ -31,7 +31,7 @@ namespace HashMedly.Generators.Generator32
                 hash *= 0xc2b2ae35;
                 hash ^= hash >> 16;
 
-                return new Union32 { UInt32 = hash }.Int32;
+                return unchecked((int)hash);
             }
         }
 
@@ -65,6 +65,7 @@ namespace HashMedly.Generators.Generator32
             return new Murmur3(seed);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static uint ROL(uint x, byte r)
         {
             return (x << r) | (x >> (32 - r));

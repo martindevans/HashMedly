@@ -30,9 +30,7 @@ namespace HashMedly.Generators.Generator32
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T Mix<T>(this T hash, sbyte value) where T : struct, IGenerator32
         {
-            var u = new Union8 { Int8 = value };
-
-            hash.UInt32(u.UInt8);
+            hash.UInt32(unchecked((byte)value));
 
             return hash;
         }
@@ -50,9 +48,7 @@ namespace HashMedly.Generators.Generator32
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T Mix<T>(this T hash, short value) where T : struct, IGenerator32
         {
-            var u = new Union16 { Int16 = value };
-
-            hash.UInt32(u.UInt16);
+            hash.UInt32(unchecked((uint)value));
 
             return hash;
         }
@@ -68,9 +64,7 @@ namespace HashMedly.Generators.Generator32
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T Mix<T>(this T hash, char value) where T : struct, IGenerator32
         {
-            var u = new Union16 { Char = value };
-
-            hash.UInt32(u.UInt16);
+            hash.UInt32(value);
 
             return hash;
         }
@@ -78,9 +72,7 @@ namespace HashMedly.Generators.Generator32
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T Mix<T>(this T hash, uint value) where T : struct, IGenerator32
         {
-            var u = new Union32 { UInt32 = value };
-
-            hash.UInt32(u.UInt32);
+            hash.UInt32(value);
 
             return hash;
         }
@@ -88,9 +80,7 @@ namespace HashMedly.Generators.Generator32
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T Mix<T>(this T hash, int value) where T : struct, IGenerator32
         {
-            var u = new Union32 { Int32 = value };
-
-            hash.UInt32(u.UInt32);
+            hash.UInt32(unchecked((uint)value));
 
             return hash;
         }
@@ -179,7 +169,7 @@ namespace HashMedly.Generators.Generator32
         public static T Mix<T>(this T hash, Guid value) where T : struct, IGenerator32
         {
             var u = new Union128 { Guid = value };
-
+            
             hash.UInt32(u.UInt32_1);
             hash.UInt32(u.UInt32_2);
             hash.UInt32(u.UInt32_3);

@@ -14,6 +14,7 @@ namespace Profiler
         {
             //Pure performance test
             BenchmarkRunner.Run<Performance>();
+
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
 
@@ -72,31 +73,31 @@ namespace Profiler
         [Benchmark]
         public int FNV1A_32()
         {
-            return IGenerator8Extensions.Mix(HashMedly.Generators.Generator8.FNV1A32
-                                           .Create()
-                                           .Mix(_int)
-                                           .Mix(_long)
-                                           .Mix(_byte)
-                                           .Mix(_bool), _string)
+            return HashMedly.Generators.Generator8.FNV1A32
+                            .Create()
+                            .Mix(_int)
+                            .Mix(_long)
+                            .Mix(_byte)
+                            .Mix(_bool).Mix(_string)
                 .GetHashCode();
         }
 
         [Benchmark]
         public int FNV1A_64()
         {
-            return IGenerator8Extensions.Mix(HashMedly.Generators.Generator8.FNV1A64
-                                          .Create()
-                                          .Mix(_int)
-                                          .Mix(_long)
-                                          .Mix(_byte)
-                                          .Mix(_bool), _string)
+            return HashMedly.Generators.Generator8.FNV1A64
+                            .Create()
+                            .Mix(_int)
+                            .Mix(_long)
+                            .Mix(_byte)
+                            .Mix(_bool).Mix(_string)
                 .GetHashCode();
         }
     }
 
     public class Collisions
     {
-        private static readonly BaseHasher[] _tests = {
+        private static readonly BaseHasher[] Tests = {
             new FNV1A32(),
             new FNV1A64(),
             new Murmur332(),
@@ -116,7 +117,7 @@ namespace Profiler
         {
             Console.WriteLine("## {0} ##", name);
 
-            foreach (var result in test(_tests))
+            foreach (var result in test(Tests))
                 Console.WriteLine("{0}\t{1}", result.Value, result.Key);
 
             Console.WriteLine();
@@ -176,7 +177,7 @@ namespace Profiler
     /// </summary>
     public class Distribution
     {
-        private static readonly BaseHasher[] _tests = {
+        private static readonly BaseHasher[] Tests = {
             new FNV1A32(),
             new FNV1A64(),
             new Noise(),
@@ -192,7 +193,7 @@ namespace Profiler
         {
             Console.WriteLine("## {0} ##", name);
 
-            foreach (var result in test(_tests))
+            foreach (var result in test(Tests))
                 Console.WriteLine("{0}\t{1}", result.Value, result.Key);
 
             Console.WriteLine();
@@ -342,7 +343,7 @@ namespace Profiler
         {
             var h = HashMedly.Generators.Generator8.FNV1A32.Create();
             for (var i = 0; i < values.Count; i++)
-                h = IGenerator8Extensions.Mix(h, values[i]);
+                h = h.Mix(values[i]);
 
             return h.GetHashCode();
         }
@@ -350,14 +351,14 @@ namespace Profiler
         public override int Hash(string value)
         {
             var h = HashMedly.Generators.Generator8.FNV1A32.Create();
-            h = IGenerator8Extensions.Mix(h, value);
+            h = h.Mix(value);
             return h.GetHashCode();
         }
 
         public override int Hash(ulong value)
         {
             var h = HashMedly.Generators.Generator8.FNV1A32.Create();
-            h = IGenerator8Extensions.Mix(h, value);
+            h = h.Mix(value);
             return h.GetHashCode();
         }
 
@@ -375,7 +376,7 @@ namespace Profiler
         {
             var h = HashMedly.Generators.Generator8.FNV1A64.Create();
             for (var i = 0; i < values.Count; i++)
-                h = IGenerator8Extensions.Mix(h, values[i]);
+                h = h.Mix(values[i]);
 
             return h.GetHashCode();
         }
@@ -383,14 +384,14 @@ namespace Profiler
         public override int Hash(string value)
         {
             var h = HashMedly.Generators.Generator8.FNV1A64.Create();
-            h = IGenerator8Extensions.Mix(h, value);
+            h = h.Mix(value);
             return h.GetHashCode();
         }
 
         public override int Hash(ulong value)
         {
             var h = HashMedly.Generators.Generator8.FNV1A64.Create();
-            h = IGenerator8Extensions.Mix(h, value);
+            h = h.Mix(value);
             return h.GetHashCode();
         }
 

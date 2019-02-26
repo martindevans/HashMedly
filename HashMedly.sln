@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashMedly", "HashMedly\HashMedly.csproj", "{258BB1BB-F5A0-4119-BB07-4C8577EE3962}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashMedly", "HashMedly\HashMedly.csproj", "{258BB1BB-F5A0-4119-BB07-4C8577EE3962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashMedlyTest", "HashMedlyTest\HashMedlyTest.csproj", "{09F7AF3C-686C-4422-AB10-674994154516}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashMedlyTest", "HashMedlyTest\HashMedlyTest.csproj", "{09F7AF3C-686C-4422-AB10-674994154516}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profiler", "Profiler\Profiler.csproj", "{6967ECF0-8369-405F-95C4-727E78588506}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{09F7AF3C-686C-4422-AB10-674994154516}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09F7AF3C-686C-4422-AB10-674994154516}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09F7AF3C-686C-4422-AB10-674994154516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6967ECF0-8369-405F-95C4-727E78588506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6967ECF0-8369-405F-95C4-727E78588506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6967ECF0-8369-405F-95C4-727E78588506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6967ECF0-8369-405F-95C4-727E78588506}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

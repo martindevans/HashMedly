@@ -13,23 +13,21 @@ namespace HashMedly.Generators.Generator8
     {
         private bool _initialized;
 
-        private Union32 _hash;
+        private uint _hash;
         public int Hash
         {
             get
             {
                 if (!_initialized)
                     throw new InvalidOperationException("Cannot get Hash from an unitialized FNV1A instance");
-                return _hash.Int32;
+                return unchecked((int)_hash);
             }
         }
 
         public static FNV1A32 Create()
         {
             return new FNV1A32 {
-                _hash = new Union32 {
-                    UInt32 = 2166136261
-                },
+                _hash = 2166136261,
                 _initialized = true
             };
         }
@@ -39,14 +37,14 @@ namespace HashMedly.Generators.Generator8
         {
             unchecked
             {
-                _hash.UInt32 ^= value;
-                _hash.UInt32 *= 16777619;
+                _hash ^= value;
+                _hash *= 16777619;
 
                 //This is *not* part of pure FNV1A!
                 //When FNV1A hits a zero value it stays there forever! To avoid this pathological value we unconditionally set
                 //the last bit to 1. This ensures that a zero value is never returned from this method at the expense of a single
                 //bit of the hash entropy.
-                _hash.UInt32 |= 1;
+                _hash |= 1;
             }
         }
 
