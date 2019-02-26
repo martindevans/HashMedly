@@ -23,12 +23,12 @@ This is very fast and murmur3 is a very good hash code. Job done.
 
 The library is designed to be pretty fast. The hash code types are all structs - this means that absolutely no allocations are made. Additionally the code is largely branchless, so it should run at the speed of *maths*. For some more concrete performance numbers clone the project and check out the `Profiler` project in the solution. This will test the various hashes versus a baseline implementation. This is a slightly unfair comparison because the baseline is a pretty bad hash function, but it's what most people would implement anyway:
 
-     Method |   Median |     StdDev | Scaled | Scaled-SD |
------------ |--------- |----------- |------- |---------- |
-   Baseline |    32 ns |  1.2437 ns |   1.00 |      0.00 |
- Murmur3_32 |   511 ns |  5.4898 ns |  15.68 |      0.56 |
-   FNV1A_32 | 1,323 ns | 11.8824 ns |  40.52 |      1.42 |
-   FNV1A_64 | 1,850 ns | 71.6737 ns |  56.23 |      2.86 |
+|     Method |   Median |     StdDev | Scaled | Scaled-SD |
+|------------|----------|------------|--------|-----------|
+|   Baseline |    32 ns |  1.2437 ns |   1.00 |      0.00 |
+| Murmur3_32 |   511 ns |  5.4898 ns |  15.68 |      0.56 |
+|   FNV1A_32 | 1,323 ns | 11.8824 ns |  40.52 |      1.42 |
+|   FNV1A_64 | 1,850 ns | 71.6737 ns |  56.23 |      2.86 |
 
 So overall murmur3 is about 15 times slower than what you'd naively implement but it's a much better hash code so it's probably a worthwhile tradeoff considering this is all happening in *under 2 microseconds*.
 
